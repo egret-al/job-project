@@ -1,0 +1,8 @@
+注意：项目运行前请确保所需要的环境都具备，且使用我的jdk
+apache-maven-3.6.3：maven管理，管理了项目所需要的一切jar包依赖，项目的pom.xml将会利用maven在本地仓库或者远程仓库寻找jar包
+maven-repository：maven会在该仓库（本地仓库）寻找jar包依赖，如果没有，就会访问远程仓库
+files：项目的文件服务器存储的位置，完整路径：F:/files，因此运行时确保该文件在F盘下
+jdk1.8.0_221：jdk1.8，包含了项目中对当前计算机（服务器）的性能分析数据
+MySQL Server5.5：mysql数据库
+springbootcomprehensiveproject：整个项目的文件，使用了SpringBoot对Spring的框架进行集成，因此，启动类在src/main/java/com/SpringbootApplication.java，SpringBoot内置了tomcat容器，因此不需要使用另外的tomcat服务器
+manage_database.sql：项目数据库脚本

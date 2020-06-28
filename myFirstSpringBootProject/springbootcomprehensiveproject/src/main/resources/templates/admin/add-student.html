@@ -1,0 +1,583 @@
+﻿<!doctype html>
+<html class="no-js " lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+
+    <title>首页</title>
+    <link rel="icon" th:href="@{/favicon.ico}" href="../favicon.ico" type="image/x-icon">
+    <!-- Favicon-->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assets/plugins/morrisjs/morris.css}" href="../assets/plugins/morrisjs/morris.css"/>
+
+    <!-- Colorpicker Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css}" href="../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+    <!-- Multi Select Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/multi-select/css/multi-select.css}" href="../assets/plugins/multi-select/css/multi-select.css">
+    <!-- Bootstrap Spinner Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/jquery-spinner/css/bootstrap-spinner.css}" href="../assets/plugins/jquery-spinner/css/bootstrap-spinner.css">
+    <!-- Bootstrap Tagsinput Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css}" href="../assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+    <!-- Bootstrap Select Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap-select/css/bootstrap-select.css}" href="../assets/plugins/bootstrap-select/css/bootstrap-select.css" />
+    <!-- noUISlider Css -->
+    <link rel="stylesheet" th:href="@{/assets/plugins/nouislider/nouislider.min.css}" href="../assets/plugins/nouislider/nouislider.min.css" />
+
+    <link rel="stylesheet" th:href="@{/assets/plugins/sweetalert/sweetalert.css}" href="../assets/plugins/sweetalert/sweetalert.css"/>
+
+    <link rel="stylesheet" th:href="@{/assets/plugins/footable-bootstrap/css/footable.bootstrap.min.css}" href="../assets/plugins/footable-bootstrap/css/footable.bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assets/plugins/footable-bootstrap/css/footable.standalone.min.css}" href="../assets/plugins/footable-bootstrap/css/footable.standalone.min.css">
+    <!-- Custom Css -->
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" href="../assets/css/main.css">
+    <link rel="stylesheet" th:href="@{/assets/css/hm-style.css}" href="../assets/css/hm-style.css">
+    <link rel="stylesheet" th:href="@{/assets/css/color_skins.css}" href="../assets/css/color_skins.css">
+</head>
+
+<body class="theme-purple index2">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" th:src="@{/assets/images/logo.svg}" src="../assets/images/logo.svg" width="48" height="48" alt="Oreo"></div>
+        <p>Please wait...</p>        
+    </div>
+</div>
+
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- 上方工具栏 -->
+<nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <img th:src="@{/assets/images/logo.svg}" src="../assets/images/logo.svg" width="30" alt="Oreo">
+                <span class="m-l-10" style="color: white">管理员页面</span>
+            </div>
+        </li>
+        <li class="hidden-md-down">
+            <a href="javascript:void(0)" title="Events">
+                <i class="zmdi zmdi-calendar"></i>
+            </a>
+        </li>
+        <li class="hidden-md-down">
+            <a href="javascript:void(0)" title="Inbox">
+                <i class="zmdi zmdi-email"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" title="Contact List">
+                <i class="zmdi zmdi-account-box-phone"></i>
+            </a>
+        </li>
+        <li class="hidden-sm-down">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>
+        <li class="float-right">
+            <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
+            <a th:href="@{/logout}" href="../sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+        </li>
+    </ul>
+</nav>
+
+<!--横向菜单栏-->
+<div class="menu-container">
+    <div class="menu">
+        <ul class="pullDown">
+            <li><a th:href="@{/index}" href="javascript:void(0)">首页</a>
+                <ul class="pullDown">
+                    <li><a th:href="@{/index}" href="index-admin.html">主页</a> </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">商家功能</a>
+                <ul class="pullDown">
+                    <li><a th:href="@{/admin/list-job}" href="javascript:void(0)">批准审核</a> </li>
+                    <li><a th:href="@{/admin/list-merchant}" href="javascript:void(0)">商家列表</a> </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">学生功能</a>
+                <ul class="pullDown">
+                    <li> <a th:href="@{/admin/list-student}" href="#" >学生列表</a> </li>
+                    <li> <a th:href="@{/admin/add-student}" href="add-student.html" >注册学籍</a> </li>
+                </ul>
+            </li>
+            <!--            <li><a href="javascript:void(0)">教师功能</a>-->
+            <!--                <ul class="pullDown">-->
+            <!--                    <li><a href="javascript:void(0)">Basic Elements</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)">Advanced Elements</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)">Form Examples</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)">Form Validation</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)">Form Wizard</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)">Editors</a> </li>-->
+            <!--                    <li><a href="javascript:void(0)" >File Upload</a></li>-->
+            <!--                </ul>-->
+            <!--            </li>-->
+            <li><a href="javascript:void(0)">个人相关</a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">我的信息</a></li>
+                    <li><a href="javascript:void(0)">修改密码</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">校方功能</a>
+                <ul class="pullDown">
+                    <li> <a href="javascript:void(0)" >功能1</a></li>
+                    <li> <a href="javascript:void(0)" >功能2</a></li>
+                    <li> <a href="javascript:void(0)" >功能3</a></li>
+                    <li> <a href="javascript:void(0)" >功能4</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">学校公告</a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">公告1</a></li>
+                    <li><a href="javascript:void(0)">公告2</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">关于我们 </a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">版权所有</a> </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 右侧边栏 -->
+<aside id="rightsidebar" class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <!--设置图标-->
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#setting">
+                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane slideRight active" id="setting">
+            <div class="slim_scroll">
+                <div class="card">
+                    <h6>普通设置</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Report Panel Usage</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox2" type="checkbox" checked="">
+                                <label for="checkbox2">Email Redirect</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox3" type="checkbox" checked="">
+                                <label for="checkbox3">Notifications</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Auto Updates</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h6>主题设置</h6>
+                    <ul class="choose-skin list-unstyled">
+                        <li data-theme="purple" class="active">
+                            <div class="purple"></div>
+                        </li>
+                        <li data-theme="blue">
+                            <div class="blue"></div>
+                        </li>
+                        <li data-theme="cyan">
+                            <div class="cyan"></div>
+                        </li>
+                        <li data-theme="green">
+                            <div class="green"></div>
+                        </li>
+                        <li data-theme="orange">
+                            <div class="orange"></div>
+                        </li>
+                        <li data-theme="blush">
+                            <div class="blush"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h6>账户设置</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox5" type="checkbox" checked="">
+                                <label for="checkbox5">Offline</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox6" type="checkbox" checked="">
+                                <label for="checkbox6">Location Permission</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card theme-light-dark">
+                    <h6>菜单风格</h6>
+                    <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                    <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+                    <button class="m_img_btn btn btn-primary btn-round btn-block">Sidebar Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>注册学籍
+                    <small>学生添加</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i>首页</a></li>
+                    <li class="breadcrumb-item active">学生注册</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>学生基本信息</strong></h2>
+                    </div>
+                    <div class="body demo-masked-input">
+                        <div class="row clearfix js-sweetalert">
+                            <div class="col-md-6">
+                                <label for="realName">姓名</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">account_box</i></span>
+                                    <input type="text" id="realName" name="realName" class="form-control" placeholder="真实姓名">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="idCard">身份证号码</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">assignment_ind</i></span>
+                                    <input type="text" id="idCard" name="idCard" class="form-control" placeholder="18位有效身份证号码">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="sex">性别</label>
+                                <select id="sex" name="sex" class="form-control show-tick">
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="nation">民族</label>
+                                <select id="nation" name="nation" class="form-control show-tick">
+                                    <option>汉族</option>
+                                    <option>满族</option>
+                                    <option>蒙古族</option>
+                                    <option>回族</option>
+                                    <option>藏族</option>
+                                    <option>维吾尔族</option>
+                                    <option>苗族</option>
+                                    <option>彝族</option>
+                                    <option>壮族</option>
+                                    <option>布依族</option>
+                                    <option>侗族</option>
+                                    <option>瑶族</option>
+                                    <option>白族</option>
+                                    <option>土家族</option>
+                                    <option>哈尼族</option>
+                                    <option>哈萨克族</option>
+                                    <option>傣族</option>
+                                    <option>黎族</option>
+                                    <option>傈僳族</option>
+                                    <option>佤族</option>
+                                    <option>畲族</option>
+                                    <option>高山族</option>
+                                    <option>拉祜族</option>
+                                    <option>水族</option>
+                                    <option>东乡族</option>
+                                    <option>纳西族</option>
+                                    <option>景颇族</option>
+                                    <option>柯尔克孜族</option>
+                                    <option>土族</option>
+                                    <option>达斡尔族</option>
+                                    <option>仫佬族</option>
+                                    <option>羌族</option>
+                                    <option>布朗族</option>
+                                    <option>撒拉族</option>
+                                    <option>毛南族</option>
+                                    <option>仡佬族</option>
+                                    <option>锡伯族</option>
+                                    <option>阿昌族</option>
+                                    <option>普米族</option>
+                                    <option>朝鲜族</option>
+                                    <option>塔吉克族</option>
+                                    <option>怒族</option>
+                                    <option>乌孜别克族</option>
+                                    <option>俄罗斯族</option>
+                                    <option>鄂温克族</option>
+                                    <option>德昂族</option>
+                                    <option>保安族</option>
+                                    <option>裕固族</option>
+                                    <option>京族</option>
+                                    <option>塔塔尔族</option>
+                                    <option>独龙族</option>
+                                    <option>鄂伦春族</option>
+                                    <option>赫哲族</option>
+                                    <option>门巴族</option>
+                                    <option>珞巴族</option>
+                                    <option>基诺族</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="studentNum">学号</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">school</i></span>
+                                    <input type="text" name="studentNum" id="studentNum" class="form-control" placeholder="十位学号">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="bindEmail">绑定邮箱</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                                    <input type="text" id="bindEmail" name="bindEmail" class="form-control email" placeholder="Ex: example@example.com">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="homeAddress">家庭地址</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">home</i></span>
+                                    <input type="text" id="homeAddress" name="homeAddress" class="form-control" placeholder="地址">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="creditCard">银行卡</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-card"></i></span>
+                                    <input type="text" id="creditCard" name="creditCard" class="form-control credit-card" placeholder="Ex: 0000 0000 0000 0000">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="phone">手机号码</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                                    <input type="text" id="phone" name="phone" class="form-control" placeholder="手机号码">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="academy">院校</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">domain</i></span>
+                                    <input type="text" id="academy" name="academy" class="form-control" value="四川工程职业技术学院" placeholder="四川工程职业技术学院">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="password">初始密码</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="material-icons">label</i></span>
+                                    <input type="text" id="password" name="password" class="form-control" value="123456" placeholder="初始密码">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <button id="addStudent" class="btn btn-raised btn-primary btn-round waves-effect" data-type="success">注册信息</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Jquery Core Js --> 
+<script th:src="@{/assets/bundles/libscripts.bundle.js}" src="../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script th:src="@{/assets/bundles/vendorscripts.bundle.js}" src="../assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+
+<script th:src="@{/assets/bundles/index.bundle.js}" src="../assets/bundles/index.bundle.js"></script> <!-- Jquery Knob, Count To, Sparkline Js -->
+<script th:src="@{/assets/bundles/morrisscripts.bundle.js}" src="../assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script th:src="@{/assets/bundles/footable.bundle.js}" src="../assets/bundles/footable.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+
+<script th:src="@{/assets/bundles/mainscripts.bundle.js}" src="../assets/bundles/mainscripts.bundle.js"></script>
+<script th:src="@{/assets/js/pages/charts/jquery-knob.js}" src="../assets/js/pages/charts/jquery-knob.js"></script>
+<script th:src="@{/assets/js/pages/charts/chart.min.js}" src="../assets/js/pages/charts/chart.min.js"></script>
+
+<script th:src="@{/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js}" src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script> <!-- Bootstrap Colorpicker Js -->
+<script th:src="@{/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js}" src="../assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js -->
+<script th:src="@{/assets/bundles/mainscripts.bundle.js}" src="../assets/plugins/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js -->
+<script th:src="@{/assets/plugins/multi-select/js/jquery.multi-select.js}" src="../assets/plugins/jquery-spinner/js/jquery.spinner.js"></script> <!-- Jquery Spinner Plugin Js -->
+<script th:src="@{/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js}" src="../assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script> <!-- Bootstrap Tags Input Plugin Js -->
+<script th:src="@{/assets/plugins/nouislider/nouislider.js}" src="../assets/plugins/nouislider/nouislider.js"></script> <!-- noUISlider Plugin Js -->
+
+<script th:src="@{/assets/plugins/sweetalert/sweetalert.min.js}" src="../assets/plugins/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
+
+<script th:src="@{/assets/bundles/mainscripts.bundle.js}" src="../assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
+<script th:src="@{/assets/js/pages/forms/advanced-form-elements.js}" src="../assets/js/pages/forms/advanced-form-elements.js"></script>
+
+<script th:src="@{/assets/js/pages/tables/footable.js}" src="../assets/js/pages/tables/footable.js"></script><!-- Custom Js -->
+<!--<script th:src="@{/assets/js/pages/ui/dialogs.js}" src="../assets/js/pages/ui/dialogs.js"></script>-->
+<script>
+    /*global $ */
+    $(document).ready(function() {
+        "use strict";
+        $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
+        //Checks if li has sub (ul) and adds class for toggle icon - just an UI
+
+        $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
+
+        $(".menu > ul > li").hover(function(e) {
+            if ($(window).width() > 943) {
+                $(this).children("ul").stop(true, false).fadeToggle(150);
+                e.preventDefault();
+            }
+        });
+        //If width is more than 943px dropdowns are displayed on hover
+        $(".menu > ul > li").click(function() {
+            if ($(window).width() <= 943) {
+                $(this).children("ul").fadeToggle(150);
+            }
+        });
+        //If width is less or equal to 943px dropdowns are displayed on click (thanks Aman Jain from stackoverflow)
+
+        $(".h-bars").click(function(e) {
+            $(".menu > ul").toggleClass('show-on-mobile');
+            e.preventDefault();
+        });
+        //when clicked on mobile-menu, normal menu is shown as a list, classic rwd menu story (thanks mwl from stackoverflow)
+
+
+
+        $("#addStudent").click(function () {
+            //验证身份证号码的正则表达式
+            const verifyId = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            //验证手机号码
+            const verifyPhone = /^1[3456789]\d{9}$/;
+            //验证邮箱
+            const verifyEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            //验证学号
+            const verifyNum = /^\d{10}$/;
+            //简单验证银行卡
+            const verifyCredit = /^\d{16}$/;
+
+            //需要验证的信息
+            var idCard = $("#idCard").val().trim();
+            var studentNum = $("#studentNum").val().trim();
+            var bindEmail = $("#bindEmail").val().trim();
+            var phone = $("#phone").val().trim();
+            var creditCard = $("#creditCard").val().trim().replace(/\s*/g,"");
+            var password = $("#password").val().trim();
+
+            //不需要验证的信息
+            var realName = $("#realName").val().trim();
+            var sex = $("#sex").val();
+            var nation = $("#nation").val();
+            var homeAddress = $("#homeAddress").val();
+            var academy = $("#academy").val();
+
+            if (idCard === "" || studentNum === "" || bindEmail === "" || phone === "" || creditCard === "" || password === ""
+                || realName === "" || sex === "" || nation === "" || homeAddress === "" || academy === "") {
+
+                showConfirmMessage("信息不全！");
+                return false;
+            } else {
+                if (verifyId.test(idCard)) {
+                    if (verifyPhone.test(phone)) {
+                        if (verifyEmail.test(bindEmail)) {
+                            if (verifyNum.test(studentNum)) {
+                                if (verifyCredit.test(creditCard)) {
+                                    const data = {
+                                        realName: realName,
+                                        idCard: idCard,
+                                        sex: sex,
+                                        nation: nation,
+                                        studentNum: studentNum,
+                                        bindEmail: bindEmail,
+                                        homeAddress: homeAddress,
+                                        creditCard: creditCard,
+                                        phone: phone,
+                                        academy: academy,
+                                        password: password
+                                    };
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/admin/registerStudent',
+                                        dataType: 'json',
+                                        contentType: "application/json;charset=UTF-8",
+                                        data: JSON.stringify(data),
+                                        success: function (data) {
+                                            if (data.status === 1) {
+                                                showSuccessMessage(data.msg);
+                                            } else if (data === 0) {
+                                                showConfirmMessage(data.msg);
+                                            }
+                                        },
+                                        error: function (data) {
+                                            showConfirmMessage(data.msg);
+                                        }
+                                    })
+                                } else {
+                                    showConfirmMessage("银行卡号非法！");
+                                }
+                            } else {
+                                showConfirmMessage("学号非法！");
+                            }
+                        } else {
+                            showConfirmMessage("邮箱非法！");
+                        }
+                    } else {
+                        showConfirmMessage("手机号码非法！");
+                    }
+                } else {
+                    showConfirmMessage("身份证非法！");
+                }
+            }
+        });
+
+        function showSuccessMessage(data) {
+            swal("添加成功！", data, "success");
+        }
+
+        function showConfirmMessage(data) {
+            swal({
+                title: "失败",
+                text: data,
+                type: "error",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                closeOnConfirm: false
+            });
+        }
+    });
+</script>
+</body>
+</html>

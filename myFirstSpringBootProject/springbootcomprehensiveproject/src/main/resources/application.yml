@@ -1,0 +1,24 @@
+#配置数据源
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 2243756824
+    url: jdbc:mysql://localhost:3306/manage_database?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      # 获取连接等待超时时间
+      max-wait: 60000
+      # 配置间隔时间进行一次检测，检测时需要关闭空闲连接，单位毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接池中最小生存时间
+      min-evictable-idle-time-millis: 300000
+
+  # 文件上传限制
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 15MB

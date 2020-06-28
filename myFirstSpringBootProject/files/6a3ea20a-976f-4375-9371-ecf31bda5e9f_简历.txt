@@ -1,0 +1,299 @@
+192.168.43.41
+192.168.232.129
+
+0：左转
+1：右转
+
+3 3
+0 0 0
+1 1 1
+1 1 1
+1 1 U 6
+
+
+
+5 6
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 1 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+2 3 L 5
+
+
+
+
+(3, 2) (2, 2) (2, 1) (1, 1) (1, 2) (,)
+
+0 0 0 0 0 0
+0 1 1 0 0 0
+0 1 0 1 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+
+
+0 0 0 0 0 0
+0 1 0 0 0 0
+0 1 1 1 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+qsekwtufurkadjcc
+lszsfykayxpbebce
+hoiixxvizxyidjhd
+tergnfxgaamndjfg
+
+
+
+
+public static void dfs(String s, int index, List<String> list) {
+	if (list.size() == 4) {
+		return;
+	}
+
+	for (int i = 1; i <= 4; i++) {
+		//前段字符串
+		String head = s.subString(0, i);
+		s = s.subString(i);
+		list.add(head);
+		dfs(s, i, list);
+	}
+}
+
+第4题承压计算，当上层重量分给下层后，会导致精度缺失
+
+
+
+
+
+
+
+Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[][] dp = new int[n + 1][n + 1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                dp[i][j] = scanner.nextInt();
+            }
+        }
+
+        for (int i = n - 1; i > 0; i--) {
+            for (int j = 1; j <= i; j++) {
+                dp[i][j] = Math.max(dp[i + 1][j], dp[i + 1][j + 1]) + dp[i][j];
+            }
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.printf("%3d ", dp[i][j]);
+            }
+            System.out.println();
+        }
+
+        System.out.println(dp[1][1]);
+
+        scanner.close();
+
+
+
+
+
+大学校园生活对于每个人来说都是最值得留恋的，作为一个软件专业点的学生，在校系统的学习了数据结构、winform、C/C++、SQL、Web前端以及基于Windows操作系统的ASP，利用三年的时间，学习了Servlet、Jsp、Strust、Hibernate等知识，对Spring、微服务等相关知识有深入学习，能够熟练的使用基于Java为基础进行的网站开发，熟悉Linux操作系统和Shell编程。在学校期间表现优秀，自学能力强，能正确处理好同学之间的关系，与大家一起交流合作，具有一定的团队开发能力。注重团队合作，具有集体观念。积极参加各种比赛，并且在蓝桥杯比赛中担任小组组长一职，与大家共同努力。对生活的态度积极，对工作认真负责，勤恳踏实，对技术方面有自己的追求。出现问题时能比较冷静的思考，考虑解决方式，最后，我希望能够获得一份有关Java方面的工作，能在行业中长足发展。
+
+
+
+
+
+public class KruskalAlgorithm {
+
+    private int edgeNum;
+    private char[] vertex;
+    private int[][] matrix;
+
+    private static final int INF = Integer.MAX_VALUE;
+
+    public KruskalAlgorithm(char[] vertex, int[][] matrix) {
+        int vlen = vertex.length;
+        this.vertex = new char[vlen];
+        for (int i = 0; i < vertex.length; i++) {
+            this.vertex[i] = vertex[i];
+        }
+
+        this.matrix = new int[vlen][vlen];
+        for (int i = 0; i < vlen; i++) {
+            for (int j = 0; j < vlen; j++) {
+                this.matrix[i][j] = matrix[i][j];
+            }
+        }
+        //统计边
+        for (int i = 0; i < vlen; i++) {
+            for (int j = i + 1; j < vlen; j++) {
+                if (matrix[i][j] != INF) {
+                    edgeNum++;
+                }
+            }
+        }
+    }
+
+    public void showMatrix() {
+        for (int i = 0; i < vertex.length; i++) {
+            for (int j = 0; j < vertex.length; j++) {
+                System.out.printf("%15d\t", matrix[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * 根据边排序
+     * @param eDatas
+     */
+    private void shellSort(EData[] eDatas) {
+        for (int gap = eDatas.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < eDatas.length; i++) {
+                int j = i;
+                EData temp = eDatas[j];
+
+                if (eDatas[j - gap].weight > eDatas[j].weight) {
+                    while (j - gap >= 0 && temp.weight < eDatas[j - gap].weight) {
+                        eDatas[j] = eDatas[j - gap];
+                        j -= gap;
+                    }
+                    eDatas[j] = temp;
+                }
+            }
+        }
+    }
+
+    /**
+     * 根据顶点的值，获取下标
+     * @param vertex 顶点的值
+     * @return 下标
+     */
+    private int getPosition(char vertex) {
+        for (int i = 0; i < this.vertex.length; i++) {
+            if (this.vertex[i] == vertex) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取图中的边，放入数组中，以便遍历数组
+     * 例如：[['A', 'B', 12], ['B', 'F', 7]...]
+     * @return
+     */
+    private EData[] getEdges() {
+        int index = 0;
+        EData[] edges = new EData[edgeNum];
+        for (int i = 0; i < vertex.length; i++) {
+            for (int j = i + 1; j < vertex.length; j++) {
+                if (matrix[i][j] != INF) {
+                    edges[index++] = new EData(vertex[i], vertex[j], matrix[i][j]);
+                }
+            }
+        }
+        return edges;
+    }
+
+    /**
+     * 获取下标为i的顶点的终点
+     * @param ends 记录了各个顶点对应的终点是哪个，ends数组是在遍历过程中逐步形成的
+     * @param i 传入顶点对应的下标
+     * @return 下标为i的顶点对应的终点的下标
+     */
+    private int getEnd(int[] ends, int i) {
+        while (ends[i] != 0) {
+            i = ends[i];
+        }
+        return i;
+    }
+
+    //-----------------------克鲁斯卡尔算法-----------------------
+
+    public void kruskal() {
+        int index = 0;                                  //最后结果数组的索引
+        int[] ends = new int[edgeNum];                  //用于保存“已有最小生成树”中的每个顶点在最小生成树中的终点
+        //创建结果数组，保存最后的最小生成树
+        EData[] results = new EData[edgeNum];
+
+        //构建图中所有边对象
+        EData[] edges = getEdges();
+        System.out.println("图的边集合：" + Arrays.toString(edges) + " 共" + edges.length);
+
+        //按照边的权值大小进行排序
+        shellSort(edges);
+
+        //遍历edges数组，将边添加到最小生成树中时，判断是否构成回路
+        for (int i = 0; i < edgeNum; i++) {
+            //获取到第i条边的第一个顶点
+            int p1 = getPosition(edges[i].start);               //p1=4
+            //获取到第i条边的第二个顶点
+            int p2 = getPosition(edges[i].end);                 //p2=5
+
+            //获取p1顶点在已有的最小生成树中的终点
+            int m = getEnd(ends, p1);               //m=4
+            //获取p2顶点在已有的最小生成树中的终点
+            int n = getEnd(ends, p2);               //n=5
+
+            //判断是否构成回路
+            if (m != n) {
+                ends[m] = n;                            //设置m在已有最小生成树中的终点
+                results[index++] = edges[i];            //有一条边加入到results数组
+            }
+        }
+
+        System.out.println("最小生成树：");
+        for (int i = 0; i < index; i++) {
+            System.out.println(results[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        char[] vertex = { 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
+        int[][] matrix = {
+                {0, 12, INF, INF, INF, 16, 14},
+                {12, 0, 10, INF, INF, 7, INF},
+                {INF, 10, 0, 3, 5, 6, INF},
+                {INF, INF, 3, 0, 4, INF, INF},
+                {INF, INF, 5, 4, 0, 2, 8},
+                {16, 7, 6, INF, 2, 0, 9},
+                {14, INF, INF, INF, 8, 9, 0}
+        };
+        KruskalAlgorithm kruskalAlgorithm = new KruskalAlgorithm(vertex, matrix);
+        kruskalAlgorithm.showMatrix();
+        EData[] edges = kruskalAlgorithm.getEdges();
+
+        System.out.println(Arrays.toString(edges));
+        kruskalAlgorithm.shellSort(edges);
+        System.out.println(Arrays.toString(edges));
+
+
+        kruskalAlgorithm.kruskal();
+
+    }
+}
+
+class EData {
+
+    char start;                         //边的起点
+    char end;                           //边的终点
+    int weight;                         //边的权值
+
+    public EData(char start, char end, int weight) {
+        this.start = start;
+        this.end = end;
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "EData{" +
+                "<" + start +
+                ", " + end +
+                "> weight=" + weight +
+                '}';
+    }
+}

@@ -1,0 +1,454 @@
+﻿<!doctype html>
+<html class="no-js " lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+
+    <title>工作列表</title>
+    <link rel="icon" th:href="@{/favicon.ico}" href="../favicon.ico" type="image/x-icon">
+    <!-- Favicon-->
+    <link rel="stylesheet" th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assets/plugins/morrisjs/morris.css}" href="../assets/plugins/morrisjs/morris.css"/>
+
+    <link rel="stylesheet" th:href="@{/assets/plugins/footable-bootstrap/css/footable.bootstrap.min.css}" href="../assets/plugins/footable-bootstrap/css/footable.bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/assets/plugins/footable-bootstrap/css/footable.standalone.min.css}" href="../assets/plugins/footable-bootstrap/css/footable.standalone.min.css">
+
+    <link rel="stylesheet" th:href="@{/assets/plugins/sweetalert/sweetalert.css}" href="../assets/plugins/sweetalert/sweetalert.css"/>
+    <!-- Custom Css -->
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" href="../assets/css/main.css">
+    <link rel="stylesheet" th:href="@{/assets/css/hm-style.css}" href="../assets/css/hm-style.css">
+    <link rel="stylesheet" th:href="@{/assets/css/color_skins.css}" href="../assets/css/color_skins.css">
+</head>
+
+<body class="theme-purple index2">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" th:src="@{/assets/images/logo.svg}" src="../assets/images/logo.svg" width="48" height="48" alt="Oreo"></div>
+        <p>Please wait...</p>        
+    </div>
+</div>
+
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- 上方工具栏 -->
+<nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <img th:src="@{/assets/images/logo.svg}" src="../assets/images/logo.svg" width="30" alt="Oreo">
+                <span class="m-l-10" style="color: white">管理员页面</span>
+            </div>
+        </li>
+        <li class="hidden-md-down">
+            <a href="javascript:void(0)" title="Events">
+                <i class="zmdi zmdi-calendar"></i>
+            </a>
+        </li>
+        <li class="hidden-md-down">
+            <a href="javascript:void(0)" title="Inbox">
+                <i class="zmdi zmdi-email"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" title="Contact List">
+                <i class="zmdi zmdi-account-box-phone"></i>
+            </a>
+        </li>
+        <li class="hidden-sm-down">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>
+        <li class="float-right">
+            <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
+            <a th:href="@{/logout}" href="../sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+        </li>
+    </ul>
+</nav>
+
+<!--横向菜单栏-->
+<div class="menu-container">
+    <div class="menu">
+        <ul class="pullDown">
+            <li><a th:href="@{/index}" href="javascript:void(0)">首页</a>
+                <ul class="pullDown">
+                    <li><a th:href="@{/index}" href="index-admin.html">主页</a> </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">商家功能</a>
+                <ul class="pullDown">
+                    <li><a th:href="@{/admin/list-job}" href="javascript:void(0)">批准审核</a> </li>
+                    <li><a th:href="@{/admin/list-merchant}" href="javascript:void(0)">商家列表</a> </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">学生功能</a>
+                <ul class="pullDown">
+                    <li> <a th:href="@{/admin/list-student}" href="#" >学生列表</a> </li>
+                    <li> <a th:href="@{/admin/add-student}" href="add-student.html" >注册学籍</a> </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">个人相关</a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">我的信息</a></li>
+                    <li><a href="javascript:void(0)">修改密码</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">校方功能</a>
+                <ul class="pullDown">
+                    <li> <a href="javascript:void(0)" >功能1</a></li>
+                    <li> <a href="javascript:void(0)" >功能2</a></li>
+                    <li> <a href="javascript:void(0)" >功能3</a></li>
+                    <li> <a href="javascript:void(0)" >功能4</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">学校公告</a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">公告1</a></li>
+                    <li><a href="javascript:void(0)">公告2</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)">关于我们 </a>
+                <ul class="pullDown">
+                    <li><a href="javascript:void(0)">版权所有</a> </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 右侧边栏 -->
+<aside id="rightsidebar" class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <!--设置图标-->
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#setting">
+                <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane slideRight active" id="setting">
+            <div class="slim_scroll">
+                <div class="card">
+                    <h6>普通设置</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Report Panel Usage</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox2" type="checkbox" checked="">
+                                <label for="checkbox2">Email Redirect</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox3" type="checkbox" checked="">
+                                <label for="checkbox3">Notifications</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Auto Updates</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h6>主题设置</h6>
+                    <ul class="choose-skin list-unstyled">
+                        <li data-theme="purple" class="active">
+                            <div class="purple"></div>
+                        </li>
+                        <li data-theme="blue">
+                            <div class="blue"></div>
+                        </li>
+                        <li data-theme="cyan">
+                            <div class="cyan"></div>
+                        </li>
+                        <li data-theme="green">
+                            <div class="green"></div>
+                        </li>
+                        <li data-theme="orange">
+                            <div class="orange"></div>
+                        </li>
+                        <li data-theme="blush">
+                            <div class="blush"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h6>账户设置</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox5" type="checkbox" checked="">
+                                <label for="checkbox5">Offline</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox6" type="checkbox" checked="">
+                                <label for="checkbox6">Location Permission</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card theme-light-dark">
+                    <h6>菜单风格</h6>
+                    <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                    <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+                    <button class="m_img_btn btn btn-primary btn-round btn-block">Sidebar Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2>管理员首页
+                <small th:text="${session.loginUser.name}">管理员名字</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <button class="btn btn-white btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
+                    <i class="zmdi zmdi-plus"></i>
+                </button>
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index-admin.html"><i class="zmdi zmdi-home"></i>刷新</a></li>
+                    <li class="breadcrumb-item active">首页</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row">
+                            <div class="details col-lg-12 col-md-12">
+                                <h3 class="product-title m-b-0" th:if="${job} != null" th:text="${job.jobTheme}">工作主题</h3>
+                                <h4 class="price m-t-0">就业薪资： <span class="col-amber" th:text="${job.salary}">15K-20K</span></h4>
+                                <div class="rating">
+                                    <!--星星-->
+                                    <div class="stars">
+                                        <span th:if="${avgScore != 0}" th:each="index:${#numbers.sequence(1, avgScore)}" class="zmdi zmdi-star col-amber"></span>
+                                        <span th:each="index:${#numbers.sequence(1, 5 - avgScore)}" class="zmdi zmdi-star-outline"></span>
+                                    </div>
+                                    <span class="m-l-10">[[${countWithScore}]]人评分</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>工作时间：[[${job.workingTime}]]</span><br>
+                                </div>
+                                <hr>
+                                <!--工作描述-->
+                                <p class="product-description" th:if="${job} != null" th:text="${job.jobDescription}">工作描述</p>
+                                <!--工作要求-->
+                                <p class="product-description" th:if="${job} != null" th:text="${job.jobRequirement}">工作要求</p>
+                                <hr>
+                                <!--工作待审核才会显示该按钮-->
+                                <div class="action" th:if="${job.currentStatus == 0}">
+                                    <button th:if="${job} != null" id="consent" class="btn btn-primary btn-round waves-effect">同意申请</button>
+                                    <button th:if="${job} != null" id="refuse" class="btn btn-primary btn-round waves-effect">拒绝申请</button>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea type="text" id="job_reason" class="form-control no-resize" placeholder="拒绝理由（同意可不填）"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#description">工作地址</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#review">查看证书</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#comment">评论</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="description" th:if="${job} != null" th:text="${job.jobAddress}">
+                                <p>暂无</p>
+                            </div>
+                            <div class="tab-pane" id="review">
+                                <div class="row clearfix text-center" th:if="${tradingCertificateList.size() > 0}"
+                                     th:each="tradingCertificate : ${tradingCertificateList}">
+                                    <div class="col-lg-4">[[${currentMerchant.name}]]</div>
+                                    <div class="col-lg-4" th:text="${#dates.format(tradingCertificate.uploadTime, 'yyyy-MM-dd hh:mm:ss')}">22</div>
+                                    <div class="col-lg-4">
+                                        <a th:href="@{/downLoad(path=${tradingCertificate.filePath})}" href="http://www.baidu.com">查看证书</a>
+                                    </div>
+                                </div>
+                                <div class="row clearfix text-center" th:if="${tradingCertificateList.size() == 0}">
+                                    无证书
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="comment">
+                                <!--加载历史评论-->
+                                <div th:if="${comments.size() > 0}" class="card">
+                                    <ul class="list-unstyled" id="messageList">
+                                        <li th:each="comment : ${comments}">
+                                            <p th:text="${comment.user.name}">名字</p>
+                                            <!--隐藏域存在comment的id，便于删除-->
+                                            <input type="hidden" id="commentId" th:value="${comment.id}">
+
+                                            <p>[[${comment.message}]]&nbsp;&nbsp;&nbsp;&nbsp;[[${#dates.format(comment.releasesTime, 'yyyy-MM-dd hh:mm:ss')}]]
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <!--删除按钮仅能被管理员使用-->
+                                                <button class="btn btn-link" onclick="deleteComment($(this))">删除</button>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="noComment" th:if="${comments.size() == 0}">暂无评论</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Jquery Core Js --> 
+<script th:src="@{/assets/bundles/libscripts.bundle.js}" src="../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script th:src="@{/assets/bundles/vendorscripts.bundle.js}" src="../assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+
+<script th:src="@{/assets/bundles/index.bundle.js}" src="../assets/bundles/index.bundle.js"></script> <!-- Jquery Knob, Count To, Sparkline Js -->
+<script th:src="@{/assets/bundles/morrisscripts.bundle.js}" src="../assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script th:src="@{/assets/bundles/footable.bundle.js}" src="../assets/bundles/footable.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+
+<script th:src="@{/assets/bundles/mainscripts.bundle.js}" src="../assets/bundles/mainscripts.bundle.js"></script>
+<script th:src="@{/assets/js/pages/charts/jquery-knob.js}" src="../assets/js/pages/charts/jquery-knob.js"></script>
+<script th:src="@{/assets/js/pages/charts/chart.min.js}" src="../assets/js/pages/charts/chart.min.js"></script>
+
+<script th:src="@{/assets/plugins/sweetalert/sweetalert.min.js}" src="../assets/plugins/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js -->
+
+<script th:src="@{/assets/js/pages/tables/footable.js}" src="../assets/js/pages/tables/footable.js"></script><!-- Custom Js -->
+<script>
+    /*global $ */
+    $(document).ready(function() {
+        "use strict";
+        $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
+        //Checks if li has sub (ul) and adds class for toggle icon - just an UI
+
+        $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
+
+        $(".menu > ul > li").hover(function(e) {
+            if ($(window).width() > 943) {
+                $(this).children("ul").stop(true, false).fadeToggle(150);
+                e.preventDefault();
+            }
+        });
+        //If width is more than 943px dropdowns are displayed on hover
+        $(".menu > ul > li").click(function() {
+            if ($(window).width() <= 943) {
+                $(this).children("ul").fadeToggle(150);
+            }
+        });
+        //If width is less or equal to 943px dropdowns are displayed on click (thanks Aman Jain from stackoverflow)
+
+
+        $("#consent").click(function () {
+            var jobId = [[${job.id}]];
+            var data = {'jobId': jobId};
+            $.ajax({
+                type: 'POST',
+                url: '/consent/job',
+                dataType: 'json',
+                data: data,
+                success: function (data) {
+                    if (data.status == 1) {
+                        alert("认证成功！");
+                    } else if (data.status == 0) {
+                        alert("认证失败！");
+                    }
+                }
+            })
+        });
+
+        $("#refuse").click(function () {
+            var jobId = [[${job.id}]];
+            var reason = $("#job_reason").val();
+            if (reason.trim() == "") {
+                showConfirmMessage("请填写拒绝理由！");
+                return false;
+            }
+            var data = {'jobId': jobId, 'reason': reason};
+            $.ajax({
+                type: 'POST',
+                url: '/refuse/job',
+                dataType: 'json',
+                data: data,
+                success: function (data) {
+                    if (data.status == 1) {
+                        showSuccessMessage("操作成功");
+                    }
+                },
+                error: function (data) {
+                    showConfirmMessage(data);
+                }
+            })
+        });
+    });
+
+    function showSuccessMessage(data) {
+        swal("成功！", data, "success");
+    }
+
+    function showConfirmMessage(data) {
+        swal({
+            title: "失败",
+            text: data,
+            type: "error",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            closeOnConfirm: false
+        });
+    }
+
+    function deleteComment(obj) {
+        //发起异步请求删除，根据返回的json串判断请求是否处理成功
+        const commentId = obj.parent().siblings("#commentId").val();
+        let data = {commentId: commentId};
+        $.ajax({
+            type: 'POST',
+            url: '/admin/deleteCommentById',
+            dataType: 'json',
+            data: data,
+            success: function (data) {
+                if (data.status === 1) {
+                    //后台删除成功，进行前端页面删除
+                    obj.parent().parent().remove();
+                } else {
+                    showWarningMessage(data.msg);
+                }
+            },
+            error: function (data) {
+                showErrorMessage(data.msg);
+            }
+        })
+    }
+</script>
+</body>
+</html>
